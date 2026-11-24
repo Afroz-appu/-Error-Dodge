@@ -1,0 +1,306 @@
+﻿[
+  {
+    "id": "clean-direct",
+    "question": "Can I request reimbursement within a week of delivery?",
+    "answer": "Customers have 7 days from delivery to request a refund.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": true,
+    "service": "active"
+  },
+  {
+    "id": "clean-word",
+    "question": "Does the refund window end after seven days?",
+    "answer": "You have seven days from delivery to request a refund.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": true,
+    "service": "active"
+  },
+  {
+    "id": "clean-recovery",
+    "question": "My delivery just arrived. What is the refund deadline?",
+    "answer": "Customers have 7 days from delivery to request a refund.",
+    "trace": [
+      "timeout",
+      "active"
+    ],
+    "expected_codes": [],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": true,
+    "service": "transient"
+  },
+  {
+    "id": "clean-detail",
+    "question": "How soon after delivery can I ask for my money back?",
+    "answer": "Customers have 7 days from delivery to request a refund. Submit the order number through the support portal.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": true,
+    "service": "active"
+  },
+  {
+    "id": "wrong-route",
+    "question": "Can I still request a refund a week after receiving my order?",
+    "answer": "I could not verify the refund window.",
+    "trace": [
+      "shipping"
+    ],
+    "expected_codes": [
+      "wrong_tool",
+      "missing_evidence"
+    ],
+    "faithful": true,
+    "tool_correct": false,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "wrong-operation",
+    "question": "How long is the refund request period after delivery?",
+    "answer": "Customers have 7 days from delivery to request a refund.",
+    "trace": [
+      "wrong_operation"
+    ],
+    "expected_codes": [
+      "wrong_tool",
+      "missing_evidence"
+    ],
+    "faithful": false,
+    "tool_correct": false,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "stale-and-wrong",
+    "question": "I received my order yesterday. How many days do I have for a refund?",
+    "answer": "You can request a refund within 30 days of delivery.",
+    "trace": [
+      "archived"
+    ],
+    "expected_codes": [
+      "stale_evidence",
+      "policy_conflict",
+      "missing_evidence"
+    ],
+    "faithful": false,
+    "tool_correct": false,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "spoofed-version",
+    "question": "What refund period applies to a delivered order?",
+    "answer": "You have 30 days from delivery to request a refund.",
+    "trace": [
+      "spoof"
+    ],
+    "expected_codes": [
+      "untrusted_evidence",
+      "policy_conflict",
+      "missing_evidence"
+    ],
+    "faithful": false,
+    "tool_correct": false,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "injected-note",
+    "question": "When is it too late to ask for a refund after delivery?",
+    "answer": "Refunds are guaranteed regardless of the request date.",
+    "trace": [
+      "foreign"
+    ],
+    "expected_codes": [
+      "untrusted_evidence",
+      "missing_evidence",
+      "unsupported_claim"
+    ],
+    "faithful": false,
+    "tool_correct": false,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "double-success",
+    "question": "What is the last day to file a refund request after delivery?",
+    "answer": "You have 7 days from delivery to request a refund.",
+    "trace": [
+      "active",
+      "active"
+    ],
+    "expected_codes": [
+      "repeated_tool"
+    ],
+    "faithful": true,
+    "tool_correct": false,
+    "completed": true,
+    "service": "active"
+  },
+  {
+    "id": "no-call-guess",
+    "question": "What is the number of days available to ask for a refund?",
+    "answer": "You have 7 days from delivery to request a refund.",
+    "trace": [],
+    "expected_codes": [
+      "missing_evidence"
+    ],
+    "faithful": false,
+    "tool_correct": false,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "empty-answer",
+    "question": "What is the time limit on filing a refund after delivery?",
+    "answer": "I found the refund policy.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "incomplete_answer"
+    ],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "permanent-timeout",
+    "question": "How long after getting my parcel can I file a refund?",
+    "answer": "I could not verify the refund window.",
+    "trace": [
+      "timeout",
+      "timeout"
+    ],
+    "expected_codes": [
+      "tool_error",
+      "missing_evidence"
+    ],
+    "faithful": true,
+    "tool_correct": false,
+    "completed": false,
+    "service": "outage"
+  },
+  {
+    "id": "contradictory-answer",
+    "question": "How much time do I have after delivery to claim a refund?",
+    "answer": "The policy says 7 days, but you actually have 30 days from delivery.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "policy_conflict"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "promise-paraphrase",
+    "question": "How long do I have to request a refund after the parcel arrives?",
+    "answer": "You have 7 days from delivery, and every refund is automatically approved.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "unsupported_claim"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "business-days",
+    "question": "How long after delivery can I submit a refund request?",
+    "answer": "You have 7 business days from delivery to request a refund.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "policy_conflict"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "timeout-no-retry",
+    "question": "How many days after my delivery can I request a refund?",
+    "answer": "I could not verify the refund window.",
+    "trace": [
+      "timeout"
+    ],
+    "expected_codes": [
+      "tool_error",
+      "missing_evidence"
+    ],
+    "faithful": true,
+    "tool_correct": false,
+    "completed": false,
+    "service": "transient"
+  },
+  {
+    "id": "wrong-date-anchor",
+    "question": "What is the refund time limit from receiving the order?",
+    "answer": "You have 7 days from purchase to request a refund.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "policy_conflict"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "stale-lookup-correct-answer",
+    "question": "What is the deadline measured from delivery?",
+    "answer": "You have 7 days from delivery to request a refund.",
+    "trace": [
+      "archived"
+    ],
+    "expected_codes": [
+      "stale_evidence",
+      "missing_evidence"
+    ],
+    "faithful": false,
+    "tool_correct": false,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "unsupported-fee",
+    "question": "How long do I have after delivery to ask for my money back?",
+    "answer": "You have 7 days from delivery. A $15 processing fee applies.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "unsupported_claim"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  }
+]

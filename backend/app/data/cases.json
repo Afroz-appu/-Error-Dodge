@@ -1,0 +1,94 @@
+﻿[
+  {
+    "id": "successful",
+    "name": "Correct refund answer",
+    "question": "How many days do I have to request a refund?",
+    "fault": "none",
+    "expected_codes": []
+  },
+  {
+    "id": "hallucinated",
+    "name": "Incorrect refund window",
+    "question": "How many days do I have to request a refund?",
+    "fault": "invent_window",
+    "expected_codes": [
+      "policy_conflict"
+    ]
+  },
+  {
+    "id": "unsupported",
+    "name": "Unsupported refund promise",
+    "question": "How many days do I have to request a refund?",
+    "fault": "invent_promise",
+    "expected_codes": [
+      "unsupported_claim"
+    ]
+  },
+  {
+    "id": "wrong-tool",
+    "name": "Wrong tool selection",
+    "question": "How many days do I have to request a refund?",
+    "fault": "wrong_tool",
+    "expected_codes": [
+      "wrong_tool",
+      "missing_evidence"
+    ]
+  },
+  {
+    "id": "tool-error",
+    "name": "Policy service failure",
+    "question": "How many days do I have to request a refund?",
+    "fault": "tool_error",
+    "expected_codes": [
+      "tool_error",
+      "missing_evidence"
+    ]
+  },
+  {
+    "id": "repeated",
+    "name": "Repeated policy lookup",
+    "question": "How many days do I have to request a refund?",
+    "fault": "repeat",
+    "expected_codes": [
+      "repeated_tool"
+    ]
+  },
+  {
+    "id": "stale",
+    "name": "Outdated retrieved policy",
+    "question": "How many days do I have to request a refund?",
+    "fault": "stale",
+    "expected_codes": [
+      "stale_evidence",
+      "policy_conflict"
+    ]
+  },
+  {
+    "id": "missing",
+    "name": "Missing policy lookup",
+    "question": "How many days do I have to request a refund?",
+    "fault": "skip",
+    "expected_codes": [
+      "missing_evidence"
+    ]
+  },
+  {
+    "id": "untrusted",
+    "name": "Untrusted tool output",
+    "question": "How many days do I have to request a refund?",
+    "fault": "untrusted",
+    "expected_codes": [
+      "untrusted_evidence",
+      "missing_evidence"
+    ]
+  },
+  {
+    "id": "incomplete",
+    "name": "Incomplete answer",
+    "question": "How many days do I have to request a refund?",
+    "fault": "incomplete",
+    "expected_codes": [
+      "incomplete_answer"
+    ]
+  }
+]

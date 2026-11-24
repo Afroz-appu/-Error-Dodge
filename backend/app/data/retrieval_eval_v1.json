@@ -1,0 +1,67 @@
+﻿[
+  {
+    "id": "refund-deadline",
+    "query": "What is the refund deadline after delivery?",
+    "expected_chunk": "refund-v2#1"
+  },
+  {
+    "id": "refund-paraphrase",
+    "query": "If I want my money back, how long can I wait?",
+    "expected_chunk": "refund-v2#1"
+  },
+  {
+    "id": "refund-request",
+    "query": "Which order information should I submit with a refund request?",
+    "expected_chunk": "refund-v2#1"
+  },
+  {
+    "id": "tracking-email",
+    "query": "Where is the shipment tracking link?",
+    "expected_chunk": "shipping-v1#1"
+  },
+  {
+    "id": "parcel-location",
+    "query": "Where can I see the current location of my parcel?",
+    "expected_chunk": "shipping-v1#1"
+  },
+  {
+    "id": "tracking-delay",
+    "query": "Tracking has been stuck for two days. Who do I contact?",
+    "expected_chunk": "shipping-v1#1"
+  },
+  {
+    "id": "return-label",
+    "query": "Where do I get a prepaid return label?",
+    "expected_chunk": "returns-v1#1"
+  },
+  {
+    "id": "return-packaging",
+    "query": "How should I prepare the item to ship it back?",
+    "expected_chunk": "returns-v1#1"
+  },
+  {
+    "id": "original-card",
+    "query": "Which payment method receives an approved credit?",
+    "expected_chunk": "payment-v1#1"
+  },
+  {
+    "id": "payment-ticket",
+    "query": "What ticket reference is required for a payment status inquiry?",
+    "expected_chunk": "payment-v1#2"
+  },
+  {
+    "id": "out-of-domain-space",
+    "query": "How many moons does Jupiter have?",
+    "expected_chunk": null
+  },
+  {
+    "id": "out-of-domain-recipe",
+    "query": "What temperature should I bake cinnamon rolls at?",
+    "expected_chunk": null
+  },
+  {
+    "id": "out-of-domain-music",
+    "query": "Who wrote The Four Seasons?",
+    "expected_chunk": null
+  }
+]

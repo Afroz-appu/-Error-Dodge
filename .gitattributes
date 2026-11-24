@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.jpg binary
+*.png binary
+# Keep bytes stable for the SHA-256 validation replays.
+backend/app/reliability.py -text whitespace=cr-at-eol,-blank-at-eof
+backend/app/context_v4.py -text whitespace=cr-at-eol,-blank-at-eof
+backend/tests/data/*.json -text whitespace=cr-at-eol,-blank-at-eof

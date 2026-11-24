@@ -1,0 +1,42 @@
+﻿[
+  {
+    "id": "confirmation-timestamp",
+    "answer": "Your claim window runs for seven days from the order confirmation timestamp.",
+    "conflict": true
+  },
+  {
+    "id": "card-event",
+    "answer": "The window closes one week after the day your account was charged.",
+    "conflict": true
+  },
+  {
+    "id": "invoice-issued",
+    "answer": "You can request reimbursement for a week from the date your invoice was issued.",
+    "conflict": true
+  },
+  {
+    "id": "delivery-plus-billing-note",
+    "answer": "The deadline is seven days from delivery. Retain your order confirmation for your records.",
+    "conflict": false
+  },
+  {
+    "id": "delivery-receipt",
+    "answer": "Ask for a refund within one week from receipt of the goods.",
+    "conflict": false
+  },
+  {
+    "id": "payment-posted",
+    "answer": "A refund may be requested for seven calendar days from the moment payment posted.",
+    "conflict": true
+  },
+  {
+    "id": "negated-billing",
+    "answer": "Your window is seven days from delivery. It is not counted from the invoice date.",
+    "conflict": false
+  },
+  {
+    "id": "invoice-received",
+    "answer": "The deadline is seven days after you receive the invoice.",
+    "conflict": true
+  }
+]

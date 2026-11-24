@@ -1,0 +1,66 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: error_dodge
+      POSTGRES_DB: error_dodge
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    secrets: [db_password]
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U error_dodge -d error_dodge"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+
+  migrate:
+    image: error-dodge:staging
+    build: .
+    command: ["sh", "-c", "alembic upgrade head && python -m app.pg_setup"]
+    environment:
+      ERROR_DODGE_DATABASE_URL_FILE: /run/secrets/db_url
+    secrets: [db_url]
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  web:
+    image: error-dodge:staging
+    build: .
+    environment:
+      ERROR_DODGE_ACCESS_MODE: token
+      ERROR_DODGE_VIEWER_TOKEN_FILE: /run/secrets/viewer_token
+      ERROR_DODGE_EVALUATOR_TOKEN_FILE: /run/secrets/evaluator_token
+      ERROR_DODGE_REVIEWER_TOKEN_FILE: /run/secrets/reviewer_token
+      ERROR_DODGE_DATABASE_URL_FILE: /run/secrets/db_url
+      ERROR_DODGE_DETECTOR: ${ERROR_DODGE_DETECTOR:-phase4}
+    secrets: [db_url, viewer_token, evaluator_token, reviewer_token]
+    ports:
+      - "127.0.0.1:8000:8000"
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+volumes:
+  database:
+
+secrets:
+  db_password:
+    file: ${ERROR_DODGE_SECRET_DIR:-.secrets}/db_password
+  db_url:
+    file: ${ERROR_DODGE_SECRET_DIR:-.secrets}/db_url
+  viewer_token:
+    file: ${ERROR_DODGE_SECRET_DIR:-.secrets}/viewer_token
+  evaluator_token:
+    file: ${ERROR_DODGE_SECRET_DIR:-.secrets}/evaluator_token
+  reviewer_token:
+    file: ${ERROR_DODGE_SECRET_DIR:-.secrets}/reviewer_token

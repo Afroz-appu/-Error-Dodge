@@ -1,0 +1,15 @@
+fastapi>=0.135,<1
+pydantic>=2.12,<3
+uvicorn>=0.41,<1
+httpx2>=2.16,<3
+pytest>=9,<10
+langgraph>=1,<2
+langgraph-checkpoint-sqlite>=3,<4
+langchain-google-genai>=4,<5
+chromadb>=1,<2
+sentence-transformers>=5,<6
+scikit-learn>=1.9,<2
+langgraph-checkpoint-postgres>=3,<4
+psycopg[binary]>=3.2,<4
+SQLAlchemy>=2,<3
+alembic>=1,<2

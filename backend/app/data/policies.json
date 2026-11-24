@@ -1,0 +1,30 @@
+﻿[
+  {
+    "id": "refund-v2",
+    "title": "Refund eligibility",
+    "version": "2.0",
+    "topic": "refund",
+    "text": "Customers have 7 days from delivery to request a refund. Submit the order number through the support portal."
+  },
+  {
+    "id": "shipping-v1",
+    "title": "Shipping updates",
+    "version": "1.0",
+    "topic": "shipping",
+    "text": "Customers can track a shipment from the order confirmation email. Contact support if tracking has not updated for 48 hours."
+  },
+  {
+    "id": "returns-v1",
+    "title": "Return procedure",
+    "version": "1.0",
+    "topic": "returns",
+    "text": "Pack the item securely and attach the prepaid return label from the support portal."
+  },
+  {
+    "id": "payment-v1",
+    "title": "Payment processing",
+    "version": "1.0",
+    "topic": "payment",
+    "text": "Approved credits are issued to the original payment method.\n\nPayment status inquiries must include the original ticket reference."
+  }
+]

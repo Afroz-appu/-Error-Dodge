@@ -1,0 +1,255 @@
+﻿[
+  {
+    "id": "eligible-neutral",
+    "question": "When can I submit a refund request for an item that arrived today?",
+    "answer": "A refund request can be filed up to one week from receipt.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": true,
+    "service": "active"
+  },
+  {
+    "id": "bank-context",
+    "question": "How long is the request window after my parcel arrives?",
+    "answer": "You have seven calendar days after your package arrives to request a refund. Your bank may take fourteen days.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": true,
+    "service": "active"
+  },
+  {
+    "id": "conditional-denial",
+    "question": "Does submitting a claim on time guarantee money back?",
+    "answer": "You have one week from delivery. If you file on time, the request might be approved.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": true,
+    "service": "active"
+  },
+  {
+    "id": "rejected-archive",
+    "question": "I read an archived 30-day rule. What applies now?",
+    "answer": "The archived policy said 30 days, which is no longer applicable. The active deadline is seven days from delivery.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": true,
+    "service": "active"
+  },
+  {
+    "id": "conditional-entitlement",
+    "question": "Is filing within the deadline enough for approval?",
+    "answer": "The refund window is one week from delivery. If you submit on time, you will receive your refund.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "unsupported_claim"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "stated-auto",
+    "question": "Does a timely filing settle the refund?",
+    "answer": "The window is seven days from delivery. Approval is assured for requests in that window.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "unsupported_claim"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "checkout-anchor",
+    "question": "Which event starts the window?",
+    "answer": "The refund deadline is one week starting at checkout.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "policy_conflict"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "invoice-anchor",
+    "question": "Which date starts the refund eligibility clock?",
+    "answer": "Your refund request is due seven days from the invoice date.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "policy_conflict"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "number-compound",
+    "question": "How many days do I get after delivery?",
+    "answer": "The active refund window is twenty-one days after delivery.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "policy_conflict"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "hedged-other-window",
+    "question": "When must my refund request be submitted?",
+    "answer": "Shipping might take twelve days. I am unable to confirm the refund deadline.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "incomplete_answer"
+    ],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "real-empty",
+    "question": "Can you find the refund window?",
+    "answer": "",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "incomplete_answer"
+    ],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "positive-with-fee",
+    "question": "What does the refund window allow?",
+    "answer": "You can request a refund within one week of delivery. A handling fee applies to all requests.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "unsupported_claim"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "duplicate-refund",
+    "question": "What is the current refund deadline?",
+    "answer": "You have seven days from delivery to request a refund.",
+    "trace": [
+      "active",
+      "active"
+    ],
+    "expected_codes": [
+      "repeated_tool"
+    ],
+    "faithful": true,
+    "tool_correct": false,
+    "completed": true,
+    "service": "active"
+  },
+  {
+    "id": "same-id-contradiction",
+    "question": "Which refund window should I rely on?",
+    "answer": "The refund window is thirty days from delivery.",
+    "trace": [
+      "spoof"
+    ],
+    "expected_codes": [
+      "untrusted_evidence",
+      "missing_evidence",
+      "policy_conflict"
+    ],
+    "faithful": false,
+    "tool_correct": false,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "unavailable",
+    "question": "How long after delivery may I file?",
+    "answer": "I cannot confirm the active refund deadline.",
+    "trace": [
+      "timeout",
+      "timeout"
+    ],
+    "expected_codes": [
+      "tool_error",
+      "missing_evidence"
+    ],
+    "faithful": true,
+    "tool_correct": false,
+    "completed": false,
+    "service": "outage"
+  },
+  {
+    "id": "negation-and-promise",
+    "question": "Is a refund guaranteed? What is the deadline?",
+    "answer": "You have seven days from delivery. Approval is not guaranteed, but your submission will be approved.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "unsupported_claim"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "tool-name-incorrect",
+    "question": "Before I file, can you confirm the deadline?",
+    "answer": "You have 7 days from delivery to request a refund.",
+    "trace": [
+      "wrong_operation"
+    ],
+    "expected_codes": [
+      "wrong_tool",
+      "missing_evidence"
+    ],
+    "faithful": false,
+    "tool_correct": false,
+    "completed": false,
+    "service": "active"
+  }
+]

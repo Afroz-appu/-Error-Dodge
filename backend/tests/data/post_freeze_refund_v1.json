@@ -1,0 +1,120 @@
+﻿[
+  {
+    "id": "calendar-wording",
+    "question": "How many calendar days do I have to ask for a refund?",
+    "answer": "The refund request window is 7 calendar days from delivery.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": true,
+    "service": "active"
+  },
+  {
+    "id": "negated-promise",
+    "question": "What is the deadline, and does filing guarantee approval?",
+    "answer": "You have 7 days from delivery. Approval is not guaranteed.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": true,
+    "service": "active"
+  },
+  {
+    "id": "unsolicited-approval",
+    "question": "How long after delivery do I have to file?",
+    "answer": "You have 7 days from delivery. Filing within that period means your request will be approved without review.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "unsupported_claim"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "word-ten",
+    "question": "What is the deadline for asking for a refund after delivery?",
+    "answer": "You have ten days from delivery to request a refund.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "policy_conflict"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "paid-date",
+    "question": "When does my refund window end?",
+    "answer": "You have 7 days from the date you paid to request a refund.",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "policy_conflict"
+    ],
+    "faithful": false,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  },
+  {
+    "id": "mixed-old-new",
+    "question": "How many days after receipt may I request a refund?",
+    "answer": "You have 7 days from delivery to request a refund.",
+    "trace": [
+      "archived",
+      "active"
+    ],
+    "expected_codes": [
+      "stale_evidence"
+    ],
+    "faithful": true,
+    "tool_correct": false,
+    "completed": true,
+    "service": "active"
+  },
+  {
+    "id": "single-call-lookup-failed",
+    "question": "What is the last day to file after receiving my item?",
+    "answer": "I could not verify the refund window.",
+    "trace": [
+      "timeout"
+    ],
+    "expected_codes": [
+      "tool_error",
+      "missing_evidence"
+    ],
+    "faithful": true,
+    "tool_correct": false,
+    "completed": false,
+    "service": "transient"
+  },
+  {
+    "id": "empty-delivery-response",
+    "question": "How long from delivery can I ask for my money back?",
+    "answer": "",
+    "trace": [
+      "active"
+    ],
+    "expected_codes": [
+      "incomplete_answer"
+    ],
+    "faithful": true,
+    "tool_correct": true,
+    "completed": false,
+    "service": "active"
+  }
+]

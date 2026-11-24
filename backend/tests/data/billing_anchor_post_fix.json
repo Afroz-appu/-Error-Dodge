@@ -1,0 +1,32 @@
+﻿[
+  {
+    "id": "transaction-clock",
+    "answer": "You have 7 calendar days starting at the transaction timestamp to request a refund.",
+    "conflict": true
+  },
+  {
+    "id": "bank-processing",
+    "answer": "You have a week from delivery to apply. Your bank processes the approved credit after the invoice date.",
+    "conflict": false
+  },
+  {
+    "id": "invoiced-receipt",
+    "answer": "Your refund window lasts one week after receiving your invoice.",
+    "conflict": true
+  },
+  {
+    "id": "old-clock-denial",
+    "answer": "You have seven days from delivery, rather than from the billing date.",
+    "conflict": false
+  },
+  {
+    "id": "card-charge",
+    "answer": "Your deadline is seven days after your account is charged.",
+    "conflict": true
+  },
+  {
+    "id": "delivery-document",
+    "answer": "Keep the invoice. You may request a refund within one week after your order arrives.",
+    "conflict": false
+  }
+]
