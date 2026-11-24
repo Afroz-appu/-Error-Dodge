@@ -17,4 +17,4 @@ COPY backend/ ./
 COPY --from=frontend /src/dist /opt/error-dodge/web
 USER error-dodge
 EXPOSE 8000
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-ec", "if [ -n \"${ERROR_DODGE_DATABASE_URL:-}${ERROR_DODGE_DATABASE_URL_FILE:-}\" ]; then alembic upgrade head && python -m app.pg_setup || exit 1; fi; exec uvicorn app.main:app --host 0.0.0.0 --port \"${PORT:-8000}\""]
